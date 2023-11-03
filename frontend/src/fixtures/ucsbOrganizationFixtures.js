@@ -9,7 +9,7 @@ const ucsbOrganizationFixtures = {
       }
     ],
 
-    threeRestaurants:
+    threeOrganizations:
     [
         {
             "orgCode": "SKY",
