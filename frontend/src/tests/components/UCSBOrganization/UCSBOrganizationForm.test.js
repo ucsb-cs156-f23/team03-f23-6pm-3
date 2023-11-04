@@ -43,7 +43,7 @@ describe("UCSBOrganizationForm tests", () => {
         expect(screen.getByTestId(/UCSBOrganizationForm-orgCode/)).toHaveValue("ZPR");
     });
 
-    /* don't need this because it doesn't have format requirement
+    
     test("Correct Error messsages on bad input", async () => {
 
         render(
@@ -51,18 +51,16 @@ describe("UCSBOrganizationForm tests", () => {
                 <UCSBOrganizationForm />
             </Router>
         );
-        await screen.findByTestId("UCSBOrganizationForm-orgTranslationShort");
-        const orgTranslationShortField = screen.getByTestId("UCSBOrganizationForm-orgTranslationShort");
-        const orgTranslationField = screen.getByTestId("UCSBDateForm-orgTranslation");
-        const submitButton = screen.getByTestId("UCSBOrganization-submit");
+        await screen.findByTestId("UCSBOrganizationForm-inactive");
+        const inactive = screen.getByTestId("UCSBOrganizationForm-inactive");
+        const submitButton = screen.getByTestId("UCSBOrganizationForm-submit");
 
-        fireEvent.change(orgTranslationShortField, { target: { value: 'bad-input' } });
-        fireEvent.change(orgTranslationField, { target: { value: 'bad-input' } });
+        fireEvent.change(inactive, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/orgTranslationShort must be in the format YYYYQ/);
+        await screen.findByText(/The input should be just true or false/);
     });
-    */
+    
     test("Correct Error messsages on missing input", async () => {
 
         render(

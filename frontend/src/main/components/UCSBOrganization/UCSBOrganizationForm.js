@@ -20,7 +20,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
     // Note that even this complex regex may still need some tweaks
 
     // Stryker disable next-line Regex
-    //const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    const inactive_regex = /(true|false)/i;
 
     // Stryker disable next-line all
     //const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
@@ -103,11 +103,12 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                             type="text"
                             isInvalid={Boolean(errors.inactive)}
                             {...register("inactive", {
-                                required: "inactive is required."
+                                required: "inactive is required.",pattern: inactive_regex
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.inactive?.message && 'inactive is required. '}
+                            {errors.inactive?.type === 'pattern' && 'The input should be just true or false'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
