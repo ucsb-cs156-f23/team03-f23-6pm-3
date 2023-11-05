@@ -78,6 +78,7 @@ describe("MenuItemTable tests", () => {
 
     expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("2");
     expect(screen.getByTestId(`${testId}-cell-row-0-col-name`)).toHaveTextContent("Tofu Banh Mi Sandwich (v)");
+    //expect(screen.getByTestId(`${testId}-cell-row-0-col-diningCommonsCode`)).toHaveTextContent("ortega");
 
     expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("3");
     expect(screen.getByTestId(`${testId}-cell-row-1-col-name`)).toHaveTextContent("Chicken Caesar Salad");
@@ -177,5 +178,6 @@ describe("MenuItemTable tests", () => {
 
     // act - click the delete button
     fireEvent.click(deleteButton);
+    //await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith(MenuItemTable.deleteCallback));
   });
 });
