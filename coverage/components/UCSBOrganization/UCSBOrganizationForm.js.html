@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/UCSBDates/UCSBDateForm.js</title>
+    <title>Code coverage report for components/UCSBOrganization/UCSBOrganizationForm.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/UCSBDates</a> UCSBDateForm.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/UCSBOrganization</a> UCSBOrganizationForm.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/6</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -193,7 +193,16 @@
 <a name='L128'></a><a href='#L128'>128</a>
 <a name='L129'></a><a href='#L129'>129</a>
 <a name='L130'></a><a href='#L130'>130</a>
-<a name='L131'></a><a href='#L131'>131</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a>
+<a name='L137'></a><a href='#L137'>137</a>
+<a name='L138'></a><a href='#L138'>138</a>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -204,23 +213,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -327,7 +345,7 @@
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 &nbsp;
-function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" }) {
+function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 &nbsp;
     // Stryker disable all
     const {
@@ -345,10 +363,10 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
     // Note that even this complex regex may still need some tweaks
 &nbsp;
     // Stryker disable next-line Regex
-    const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
+    const inactive_regex = /(true|false)/i;
 &nbsp;
     // Stryker disable next-line all
-    const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
+    //const yyyyq_regex = /((19)|(20))\d{2}[1-4]/i; // Accepts from 1900-2099 followed by 1-4.  Close enough.
 &nbsp;
     return (
 &nbsp;
@@ -356,51 +374,59 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 &nbsp;
 &nbsp;
             &lt;Row&gt;
-&nbsp;
-                {initialContents &amp;&amp; (
-                    &lt;Col&gt;
-                        &lt;Form.Group className="mb-3" &gt;
-                            &lt;Form.Label htmlFor="id"&gt;Id&lt;/Form.Label&gt;
-                            &lt;Form.Control
-                                data-testid="UCSBDateForm-id"
-                                id="id"
-                                type="text"
-                                {...register("id")}
-                                value={initialContents.id}
-                                disabled
-                            /&gt;
-                        &lt;/Form.Group&gt;
-                    &lt;/Col&gt;
-                )}
+            
+                &lt;Col&gt;
+                    &lt;Form.Group className="mb-3" &gt;
+                        &lt;Form.Label htmlFor="orgCode"&gt;orgCode&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid="UCSBOrganizationForm-orgCode"
+                            id="orgCode"
+                            type="text"
+                            isInvalid={Boolean(errors.orgTranslationShort)}
+                            {...register("orgCode",{
+                                required: "orgCode is required."
+                            })}
+                            //value={initialContents.orgCode}
+                            
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                            {errors.orgCode &amp;&amp; 'orgCode is required. '}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
+                &lt;/Col&gt;
+                
 &nbsp;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="quarterYYYYQ"&gt;Quarter YYYYQ&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="orgTranslationShort"&gt;orgTranslationShort&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="UCSBDateForm-quarterYYYYQ"
-                            id="quarterYYYYQ"
+                            data-testid="UCSBOrganizationForm-orgTranslationShort"
+                            id="orgTranslationShort"
                             type="text"
-                            isInvalid={Boolean(errors.quarterYYYYQ)}
-                            {...register("quarterYYYYQ", { required: true, pattern: yyyyq_regex })}
+                            isInvalid={Boolean(errors.orgTranslationShort)}
+                            {...register("orgTranslationShort", {
+                                required: "orgTranslationShort is required."
+                            })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.quarterYYYYQ &amp;&amp; 'QuarterYYYYQ is required. '}
-                            {errors.quarterYYYYQ?.type === 'pattern' &amp;&amp; 'QuarterYYYYQ must be in the format YYYYQ, e.g. 20224 for Fall 2022'}
+                            {errors.orgTranslationShort &amp;&amp; 'orgTranslationShort is required. '}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="localDateTime"&gt;Date (iso format)&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="orgTranslation"&gt;orgTranslation&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="UCSBDateForm-localDateTime"
-                            id="localDateTime"
-                            type="datetime-local"
-                            isInvalid={Boolean(errors.localDateTime)}
-                            {...register("localDateTime", { required: true, pattern: isodate_regex })}
+                            data-testid="UCSBOrganizationForm-orgTranslation"
+                            id="orgTranslation"
+                            type="text"
+                            isInvalid={Boolean(errors.orgTranslation)}
+                            {...register("orgTranslation", {
+                                required: "orgTranslation is required."
+                            })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.localDateTime &amp;&amp; 'LocalDateTime is required. '}
+                            {errors.orgTranslation &amp;&amp; 'orgTranslation is required. '}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
@@ -413,18 +439,19 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
 &nbsp;
 &nbsp;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="name"&gt;Name&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="inactive"&gt;inactive&lt;/Form.Label&gt;
                         &lt;Form.Control
-                            data-testid="UCSBDateForm-name"
-                            id="name"
+                            data-testid="UCSBOrganizationForm-inactive"
+                            id="inactive"
                             type="text"
-                            isInvalid={Boolean(errors.name)}
-                            {...register("name", {
-                                required: "Name is required."
+                            isInvalid={Boolean(errors.inactive)}
+                            {...register("inactive", {
+                                required: "inactive is required.",pattern: inactive_regex
                             })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.name?.message}
+                            {errors.inactive?.message &amp;&amp; 'inactive is required. '}
+                            {'The input should be just true or false'}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
                 &lt;/Col&gt;
@@ -434,14 +461,14 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
                 &lt;Col&gt;
                     &lt;Button
                         type="submit"
-                        data-testid="UCSBDateForm-submit"
+                        data-testid="UCSBOrganizationForm-submit"
                     &gt;
                         {buttonLabel}
                     &lt;/Button&gt;
                     &lt;Button
                         variant="Secondary"
                         onClick={() =&gt; navigate(-1)}
-                        data-testid="UCSBDateForm-cancel"
+                        data-testid="UCSBOrganizationForm-cancel"
                     &gt;
                         Cancel
                     &lt;/Button&gt;
@@ -452,7 +479,7 @@ function UCSBDateForm({ initialContents, submitAction, buttonLabel = "Create" })
     )
 }
 &nbsp;
-export default UCSBDateForm;
+export default UCSBOrganizationForm;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
