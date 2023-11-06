@@ -8,7 +8,7 @@ const ucsbOrganizationFixtures = {
         "inactive": false
       }
     ],
-
+    
     threeOrganizations:
     [
         {
