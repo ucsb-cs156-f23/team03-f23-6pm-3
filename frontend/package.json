@@ -6,6 +6,7 @@
     "node": "=16.20.0"
   },
   "dependencies": {
+    "16": "^0.0.2",
     "@testing-library/dom": "^8.11.3",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",

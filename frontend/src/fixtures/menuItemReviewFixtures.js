@@ -8,7 +8,7 @@ const menuItemReviewFixtures = {
         "comments": "I love the chocolate cake!"
         
     },
-    threeDates: [
+    threeItemReviews: [
         {
             "id": 1, 
             "itemId": 14,
