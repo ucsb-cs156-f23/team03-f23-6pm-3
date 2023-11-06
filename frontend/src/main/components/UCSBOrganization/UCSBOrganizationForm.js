@@ -108,7 +108,7 @@ function UCSBOrganizationForm({ initialContents, submitAction, buttonLabel = "Cr
                         />
                         <Form.Control.Feedback type="invalid">
                             {errors.inactive?.message && 'inactive is required. '}
-                            {errors.inactive?.type === 'pattern' && 'The input should be just true or false'}
+                            {'The input should be just true or false'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
