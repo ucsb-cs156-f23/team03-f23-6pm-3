@@ -82,7 +82,7 @@ describe("MenuItemReviewForm tests", () => {
     });
 
 
-    test("Correct Error messsages on value outside of 0 and 5 for stars", async () => {
+    test("Correct Error messsages on value greater than 5 for stars", async () => {
 
         render(
             <Router  >
@@ -97,6 +97,46 @@ describe("MenuItemReviewForm tests", () => {
         fireEvent.click(submitButton);
 
         await screen.findByText(/Stars must be between 0 and 5./);
+
+    });
+
+
+
+    test("Correct Error messsages on value less than 0 for stars", async () => {
+
+        render(
+            <Router  >
+                <MenuItemReviewForm />
+            </Router>
+        );
+        await screen.findByTestId("MenuItemReviewForm-submit");
+        const starsField = screen.getByTestId("MenuItemReviewForm-stars");
+        const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
+        
+        fireEvent.change(starsField, { target: { value: -1 } });   
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/Stars must be between 0 and 5./);
+
+    });
+
+
+
+    test("Correct Error messsages for Item ID value less than 0", async () => {
+
+        render(
+            <Router  >
+                <MenuItemReviewForm />
+            </Router>
+        );
+        await screen.findByTestId("MenuItemReviewForm-submit");
+        const itemIdField = screen.getByTestId("MenuItemReviewForm-itemId");
+        const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
+        
+        fireEvent.change(itemIdField, { target: { value: -1 } });   
+        fireEvent.click(submitButton);
+
+        await screen.findByText(/Item ID must be greater than 0./);
 
     });
 
@@ -133,6 +173,7 @@ describe("MenuItemReviewForm tests", () => {
         expect(screen.queryByText(/Item ID must be greater than 0./)).not.toBeInTheDocument();
         expect(screen.queryByText(/Date reviewed is required./)).not.toBeInTheDocument();
         expect(screen.queryByText(/Reviewer email must be an email./)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Stars must be between 0 and 5./)).not.toBeInTheDocument();
 
     });
 
