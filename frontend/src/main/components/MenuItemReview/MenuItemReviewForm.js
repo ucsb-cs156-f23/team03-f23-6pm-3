@@ -1,10 +1,9 @@
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 
 function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Create" }) {
 
-    
     // Stryker disable all
     const {
         register,
@@ -21,8 +20,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
 
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-    
-    // const email_regex/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    // Stryker disable next-line Regex
     const email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 
@@ -59,8 +57,8 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                             {...register("itemId", { required: true, min: 1})}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.itemId && 'Item ID is required. '}
-                            {errors.itemId?.type === 'min' && 'Item ID must be greater than 1.'}
+                            {errors.itemId && 'Item ID is required.'}
+                            {errors.itemId?.type === 'min' && 'Item ID must be greater than 0.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -75,7 +73,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                             {...register("dateReviewed", { required: true, pattern: isodate_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.dateReviewed && 'DateReviewed is required. '}
+                            {errors.dateReviewed && 'Date reviewed is required.'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
@@ -95,7 +93,7 @@ function MenuItemReviewForm({ initialContents, submitAction, buttonLabel = "Crea
                             {...register("reviewerEmail", { required: true, pattern: email_regex })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.reviewerEmail && "Reviewer Email is required."}
+                            {errors.reviewerEmail && "Reviewer email is required."}
                             {errors.reviewerEmail?.type === 'pattern' && 'Reviewer email must be an email.'}
                         </Form.Control.Feedback>
                     </Form.Group>
