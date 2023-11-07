@@ -76,6 +76,24 @@ function App() {
             </>
           )
         }
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/organizations" element={<UCSBOrganizationIndexPage />} />
+            </>
+          )
+        }
+        {/* for /organizations/edit/:id, if something does work, try change id to orgCode.
+        or try to change organizations to ucsborganizations
+        */}
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/organizations/edit/:id" element={<UCSBOrganizationEditPage />} /> 
+              <Route exact path="/organizations/create" element={<UCSBOrganizationCreatePage />} />
+            </>
+          )
+        }
       </Routes>
     </BrowserRouter>
   );
