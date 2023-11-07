@@ -57,6 +57,37 @@ describe("UserTable tests", () => {
 
   });
 
+  test("renders empty table correctly", () => {
+    
+    // arrange
+    const currentUser = currentUserFixtures.adminUser;
+
+    const expectedHeaders = ["id", "Title", "Url", "Explanation", "Email", "DateAdded"];
+    const expectedFields = ["id", "title", "url", "explanation", "email", "dateAdded"];
+    const testId = "ArticlesTable";
+
+    // act
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <ArticlesTable articles={[]} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+    );
+
+    // assert
+    expectedHeaders.forEach((headerText) => {
+      const header = screen.getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
+
+    expectedFields.forEach((field) => {
+      const fieldElement = screen.queryByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(fieldElement).not.toBeInTheDocument();
+    });
+  });
+
+
   test("Has the expected colum headers and content for adminUser", () => {
 
     const currentUser = currentUserFixtures.adminUser;
@@ -118,6 +149,29 @@ describe("UserTable tests", () => {
     fireEvent.click(editButton);
 
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/articles/edit/2'));
+
+  });
+
+
+  test("Delete button calls the callback", async () => {
+
+    const currentUser = currentUserFixtures.adminUser;
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+            <ArticlesTable articles={articlesFixtures.threeArticles} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+
+    );
+
+    await waitFor(() => { expect(screen.getByTestId(`ArticlesTable-cell-row-0-col-id`)).toHaveTextContent("2"); });
+
+    const deleteButton = screen.getByTestId(`ArticlesTable-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    
+    fireEvent.click(deleteButton);
 
   });
 
