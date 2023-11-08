@@ -143,7 +143,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.email && 'Email is required. ' && 'Valid email has a a username followed by \'@\' followed by a domain, followed by \'.\' and an extension of at least length 2'}
+                            {errors.email && 'Email is required. ' && 'Valid email has a a username followed by @ followed by a domain, followed by . and an extension of at least length 2'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
