@@ -70,7 +70,7 @@ describe("ArticlesForm tests", () => {
         await screen.findByText(/Title is required./);
         expect(screen.getByText(/Url is required./)).toBeInTheDocument();
         expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
-        expect(screen.getByText(/Email is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Email is required./  && /Valid email has a a username followed by @ followed by a domain, followed by . and an extension of at least length 2/)).toBeInTheDocument();
         expect(screen.getByText(/DateAdded is required./ && /DateAdded must be in ISO format/)).toBeInTheDocument();
 
     });
@@ -104,6 +104,7 @@ describe("ArticlesForm tests", () => {
         await waitFor(() => expect(mockSubmitAction).toHaveBeenCalled());
 
         expect(screen.queryByText(/DateAdded must be in ISO format/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Valid email has a a username followed by @ followed by a domain, followed by . and an extension of at least length 2/)).not.toBeInTheDocument();
 
     });
 
