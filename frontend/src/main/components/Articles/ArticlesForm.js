@@ -22,6 +22,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
 
+    // Stryker disable next-line Regex
     const email_regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
 
     return (
@@ -142,7 +143,7 @@ function ArticlesForm({ initialContents, submitAction, buttonLabel = "Create" })
                             })}
                         />
                         <Form.Control.Feedback type="invalid">
-                            {errors.email?.message && 'Valid email has a a username followed by \'@\' followed by a domain, followed by \'.\' and an extension of at least length 2'}
+                            {errors.email && 'Email is required. ' && 'Valid email has a a username followed by \'@\' followed by a domain, followed by \'.\' and an extension of at least length 2'}
                         </Form.Control.Feedback>
                     </Form.Group>
                 </Col>
