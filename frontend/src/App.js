@@ -89,6 +89,7 @@ function App() {
           hasRole(currentUser, "ROLE_USER") && (
             <>
               <Route exact path="/menuitemreview" element={<MenuItemReviewIndexPage />} />
+            </>
         {
           hasRole(currentUser, "ROLE_USER") && (
             <>
@@ -107,7 +108,6 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-
               <Route exact path="/ucsbdiningcommonsmenuitem/edit/:id" element={<UCSBDiningCommonsMenuItemEditPage />} />
               <Route exact path="/ucsbdiningcommonsmenuitem/create" element={<UCSBDiningCommonsMenuItemCreatePage />} />
             </>
