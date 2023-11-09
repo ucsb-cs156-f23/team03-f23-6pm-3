@@ -18,7 +18,7 @@ const Template = (args) => {
 export const Empty = Template.bind({});
 
 Empty.args = {
-    dates: []
+    reviews: []
 };
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
