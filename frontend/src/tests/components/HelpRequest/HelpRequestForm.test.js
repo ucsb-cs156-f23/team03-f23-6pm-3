@@ -55,7 +55,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.change(requesterTeamIdField, { target: { value: 'bad-input' } });
         fireEvent.click(submitButton);
 
-        await screen.findByText(/TeamId must be in the format qYY-nTT-S, e.g. s22-5pm-3/);
+        await screen.findByText(/Invalid Team Id. Team Id must be in the format qYY-nTT-S, e.g. f23-6pm-3/);
     });
 
     test("Correct Error messsages on bad input: solved", async () => {
@@ -87,10 +87,10 @@ describe("HelpRequestForm tests", () => {
 
         fireEvent.click(submitButton);
 
-        await screen.findByText(/RequesterEmail is required./);
-        expect(screen.getByText(/TeamId is required./)).toBeInTheDocument();
-        expect(screen.getByText(/TableOrBreakoutRoom is required./)).toBeInTheDocument();
-        expect(screen.getByText(/RequestTime is required./)).toBeInTheDocument();
+        await screen.findByText(/Requester Email is required./);
+        expect(screen.getByText(/Team Id is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Table Or BreakoutRoom is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
         expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
         expect(screen.getByText(/Solved is required./)).toBeInTheDocument();
     });
@@ -123,7 +123,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.change(solvedField, { target: { value: 'true' } });
         fireEvent.click(submitButton);
 
-        expect(screen.queryByText(/TeamId must be in the format qYY-nTT-S, e.g. s22-5pm-3/)).not.toBeInTheDocument();
+        expect(screen.queryByText(/Invalid Team Id. Team Id must be in the format qYY-nTT-S, e.g. f23-6pm-3/)).not.toBeInTheDocument();
         expect(screen.queryByText(/Solved must be true or false, e.g. true/)).not.toBeInTheDocument();
 
     });
@@ -140,10 +140,10 @@ describe("HelpRequestForm tests", () => {
         const submitButton = screen.getByText(/Create/);
         fireEvent.click(submitButton);
 
-        await screen.findByText(/RequesterEmail is required./);
-        expect(screen.getByText(/TeamId is required./)).toBeInTheDocument();
-        expect(screen.getByText(/TableOrBreakoutRoom is required./)).toBeInTheDocument();
-        expect(screen.getByText(/RequestTime is required./)).toBeInTheDocument();
+        await screen.findByText(/Requester Email is required./);
+        expect(screen.getByText(/Team Id is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Table Or Breakout Room is required./)).toBeInTheDocument();
+        expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
         expect(screen.getByText(/Explanation is required./)).toBeInTheDocument();
         expect(screen.getByText(/Solved is required./)).toBeInTheDocument();
 
@@ -155,10 +155,7 @@ describe("HelpRequestForm tests", () => {
         fireEvent.click(submitButton);
         
         await screen.findAllByText(/Solved must be true or false, e.g. true/);
-        expect(screen.getByText(/TeamId must be in the format qYY-nTT-S, e.g. s22-5pm-3/)).toBeInTheDocument();
-        // await waitFor(() => {
-        //     expect(screen.getByText(/Solved must be true or false, e.g. true/)).toBeInTheDocument();
-        // });
+        expect(screen.getByText(/Invalid Team Id. Team Id must be in the format qYY-nTT-S, e.g. f23-6pm-3/)).toBeInTheDocument();
     });
 
     test("Correct validations are performed for solved 2", async () => {
@@ -229,7 +226,7 @@ describe("HelpRequestForm tests", () => {
             "s22-aam-3"
         ];
     
-        
+
         for (const value of mutantValues) {
             await fireEvent.change(teamIdField, { target: { value } });
             await fireEvent.click(submitButton);
