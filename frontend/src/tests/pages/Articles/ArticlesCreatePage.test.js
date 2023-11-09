@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -60,7 +60,7 @@ describe("ArticlesCreatePage tests", () => {
             url: "https://editorial.rottentomatoes.com/article/most-anticipated-movies-of-2023/",
             explanation: "Useful list of new movies",
             email: "me@ucsb.edu",
-            dateAdded: "2022-02-02T00:00:00"
+            dateAdded: "2022-02-02T00:00"
         };
 
         axiosMock.onPost("/api/articles/post").reply( 202, article );
@@ -88,7 +88,7 @@ describe("ArticlesCreatePage tests", () => {
         fireEvent.change(urlField, { target: { value: 'https://editorial.rottentomatoes.com/article/most-anticipated-movies-of-2023/' } });
         fireEvent.change(explanationField, { target: { value: 'Useful list of new movies' } });
         fireEvent.change(emailField, { target: { value: 'me@ucsb.edu' } });
-        fireEvent.change(dateAddedField, { target: { value: '2022-02-02T00:00:00' } });
+        fireEvent.change(dateAddedField, { target: { value: '2022-02-02T00:00' } });
 
         expect(submitButton).toBeInTheDocument();
 
@@ -102,7 +102,7 @@ describe("ArticlesCreatePage tests", () => {
             "url": "https://editorial.rottentomatoes.com/article/most-anticipated-movies-of-2023/",
             "explanation": "Useful list of new movies",
             "email": "me@ucsb.edu",
-            "dateAdded": "2022-02-02T00:00:00",
+            "dateAdded": "2022-02-02T00:00",
         });
 
         expect(mockToast).toBeCalledWith("New article Created - id: 17 title: New Movies in 2023");
