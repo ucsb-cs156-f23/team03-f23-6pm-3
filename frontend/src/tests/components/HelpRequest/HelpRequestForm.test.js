@@ -229,6 +229,7 @@ describe("HelpRequestForm tests", () => {
             "s22-aam-3"
         ];
     
+        
         for (const value of mutantValues) {
             await fireEvent.change(teamIdField, { target: { value } });
             await fireEvent.click(submitButton);
