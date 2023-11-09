@@ -1,12 +1,12 @@
 const helpRequestFixtures = {
     oneHelpRequest: [
       {
-       "id": 1,
-        "requesterEmail": "requester@example.com",
-        "teamId": "team01",
-        "tableOrBreakoutRoom": "Table 5",
-        "requestTime": "2023-10-10T14:30:00",
-        "explanation": "Need help with project setup",
+        "id": 1,
+        "requesterEmail": "pdg@ucsb.edu",
+        "teamId": "s22-6pm-4",
+        "tableOrBreakoutRoom": "13",
+        "requestTime": "2022-04-21T14:15:00",
+        "explanation": "Merge conflict",
         "solved": false
       }
     ],
