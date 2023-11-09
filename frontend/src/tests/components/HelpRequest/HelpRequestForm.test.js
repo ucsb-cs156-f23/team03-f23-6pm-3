@@ -173,7 +173,7 @@ describe("HelpRequestForm tests", () => {
         const submitButton = screen.getByText(/Create/);
         fireEvent.click(submitButton);
 
-        await screen.findByText(/Requester ·Email is required./);
+        await screen.findByText(/Requester Email is required./);
         expect(screen.getByText(/Team Id is required./)).toBeInTheDocument();
         expect(screen.getByText(/Table Or BreakoutRoom is required./)).toBeInTheDocument();
         expect(screen.getByText(/Request Time is required./)).toBeInTheDocument();
@@ -207,12 +207,11 @@ describe("HelpRequestForm tests", () => {
         fireEvent.change(requesterEmailField, { target: { value: 'cgaucho@ucsb.edu' } });
         fireEvent.change(tableOrBreakoutRoomField, { target: { value: '7' } });
         fireEvent.change(requestTimeField, { target: { value: '2022-04-20T17:35' } });
-        fireEvent.change(requesterEmailField, { target: { value: '20221' } });
         fireEvent.change(explanationField, { target: { value: 'Need help with Swagger-ui' } });
         fireEvent.change(solvedField, { target: { value: 'true' } });
         fireEvent.change(teamIdField, { target: { value: "f22-5pm-3" } });
-        expect(screen.queryByText(/TeamId must be in the format qYY-nTT-S, e.g. s22-5pm-3/)).not.toBeInTheDocument();
-    
+        expect(screen.queryByText(/Invalid Team Id. Team Id must be in the format qYY-nTT-S, e.g. f23-6pm-3/)).not.toBeInTheDocument();
+        expect(screen.getByText(/Invalid email. Valid email has a username followed by @ followed by a domain, followed by . and an extension of at least length 2/)).not.toBeInTheDocument();
        // Test with values of mutant patterns
         const mutantValues = [
             "m142-9am-4", // added digit
@@ -234,7 +233,7 @@ describe("HelpRequestForm tests", () => {
             await fireEvent.change(teamIdField, { target: { value } });
             await fireEvent.click(submitButton);
             await waitFor(() => {
-                expect(screen.getByText(/TeamId must be in the format qYY-nTT-S, e.g. s22-5pm-3/)).toBeInTheDocument();
+                expect(screen.getByText(/Invalid Team Id. Team Id must be in the format qYY-nTT-S, e.g. f23-6pm-3/)).toBeInTheDocument();
             });
         }
     });
