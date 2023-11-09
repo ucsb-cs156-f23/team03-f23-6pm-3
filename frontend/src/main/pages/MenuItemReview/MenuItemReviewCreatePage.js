@@ -1,13 +1,13 @@
-import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
+// import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 
-export default function MenuItemReviewCreatePage() {
+// export default function MenuItemReviewCreatePage() {
 
-  // Stryker disable all : placeholder for future implementation
-  return (
-    <BasicLayout>
-      <div className="pt-2">
-        <h1>Create page not yet implemented</h1>
-      </div>
-    </BasicLayout>
-  )
-}
+//   // Stryker disable all : placeholder for future implementation
+//   return (
+//     <BasicLayout>
+//       <div className="pt-2">
+//         <h1>Create page not yet implemented</h1>
+//       </div>
+//     </BasicLayout>
+//   )
+// }
