@@ -9,7 +9,7 @@ const menuItemFixtures = {
       }
     ],
 
-    threeRestaurants:
+    threeMenuItems:
     [
         {
             "id": 2,
