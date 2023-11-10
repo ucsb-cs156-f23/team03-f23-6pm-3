@@ -93,6 +93,35 @@ describe("RecommendationRequest tests", () => {
     expect(deleteButton).toHaveClass("btn-danger");
 
   });
+  
+  test("Has the expected column headers and no content for empty table", () => {
+
+    const currentUser = currentUserFixtures.userOnly;
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <RecommendationRequestTable recommendationrequests={[]} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+
+    );
+
+    const expectedHeaders = ["id", "RequesterEmail", "ProfessorEmail", "Explanation", "DateRequested", "DateNeeded", "Done"];
+    const expectedFields = ["id", "requesterEmail", "professorEmail", "explanation", "dateRequested", "dateNeeded", "done"];
+    const testId = "RecommendationRequestTable";
+
+    expectedHeaders.forEach((headerText) => {
+      const header = screen.getByText(headerText);
+      expect(header).toBeInTheDocument();
+    });
+
+    expectedFields.forEach((field) => {
+      const header = screen.queryByTestId(`${testId}-cell-row-0-col-${field}`);
+      expect(header).not.toBeInTheDocument();
+    });
+
+  });
 
   test("Edit button navigates to the edit page for admin user", async () => {
 
@@ -115,6 +144,28 @@ describe("RecommendationRequest tests", () => {
     fireEvent.click(editButton);
 
     await waitFor(() => expect(mockedNavigate).toHaveBeenCalledWith('/recommendationrequest/edit/1'));
+
+  });
+
+  test("Delete button works for admin user", async () => {
+
+    const currentUser = currentUserFixtures.adminUser;
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter>
+          <RecommendationRequestTable recommendationrequests={recommendationRequestFixtures.threeRecomendation} currentUser={currentUser} />
+        </MemoryRouter>
+      </QueryClientProvider>
+
+    );
+
+    await waitFor(() => { expect(screen.getByTestId(`RecommendationRequestTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+
+    const deleteButton = screen.getByTestId(`RecommendationRequestTable-cell-row-0-col-Delete-button`);
+    expect(deleteButton).toBeInTheDocument();
+    
+    fireEvent.click(deleteButton);
 
   });
 
