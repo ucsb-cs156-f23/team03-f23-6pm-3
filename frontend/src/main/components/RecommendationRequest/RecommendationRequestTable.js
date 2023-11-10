@@ -6,7 +6,7 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/recommendat
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function RecommendationRequestTable({ recommendationrequests, currentUser }) {
+export default function RecommendationRequestTable({ requests, currentUser }) {
 
     const navigate = useNavigate();
 
@@ -65,7 +65,7 @@ export default function RecommendationRequestTable({ recommendationrequests, cur
     } 
 
     return <OurTable
-        data={recommendationrequests}
+        data={requests}
         columns={columns}
         testid={"RecommendationRequestTable"}
     />;
