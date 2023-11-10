@@ -6,7 +6,7 @@ import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/recommendat
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 
-export default function UCSBDatesTable({ recommendationrequests, currentUser }) {
+export default function RecommendationRequestTable({ recommendationrequests, currentUser }) {
 
     const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ export default function UCSBDatesTable({ recommendationrequests, currentUser }) 
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/recommendationrequests/all"]
+        ["/api/recommendationrequest/all"]
     );
     // Stryker restore all 
 
