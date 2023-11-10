@@ -54,7 +54,8 @@ export default function UCSBDatesTable({ recommendationrequests, currentUser }) 
         },
         {
             Header: 'Done',
-            accessor: 'done',
+            id: 'done',
+            accessor: row => String(row.done),
         }
     ];
 
