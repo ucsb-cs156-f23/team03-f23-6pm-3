@@ -63,7 +63,6 @@ describe("MenuItemReviewCreatePage tests", () => {
         };
 
         axiosMock.onPost("/api/menuitemreview/post").reply( 202, menuItemReview );
-
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -107,7 +106,6 @@ describe("MenuItemReviewCreatePage tests", () => {
         expect(mockToast).toBeCalledWith("New menuItemReview Created - id: 17 itemId: 23");
         expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
-
 
 });
 

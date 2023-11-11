@@ -1,3 +1,4 @@
+
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -25,7 +26,6 @@ jest.mock('react-toastify', () => {
 describe("MenuItemReviewIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
-
     const testId = "MenuItemReviewTable";
 
     const setupUserOnly = () => {
@@ -136,6 +136,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         );
 
         // assert
+
         await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
         expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
