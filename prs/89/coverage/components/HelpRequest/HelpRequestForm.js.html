@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>24/24</span>
+                <span class='fraction'>23/23</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -240,9 +240,7 @@
 <a name='L175'></a><a href='#L175'>175</a>
 <a name='L176'></a><a href='#L176'>176</a>
 <a name='L177'></a><a href='#L177'>177</a>
-<a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L178'></a><a href='#L178'>178</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -253,29 +251,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -444,15 +440,18 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
 &nbsp;
     // Stryker disable next-line Regex
     const isodate_regex = /(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d)|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d)/i;
-    // Stryker disable next-line Regex
-    const teamid_regex = /^[sfwm]\d{2}-(1[0-2]|[1-9])(am|pm)-[1-4]$/i;
-    // Stryker disable next-line Regex
-    const email_regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/
+&nbsp;
+    // Stryker disable next-line all
+    const email_regex = /[\w.]+@([\w]+\.)+[\w-]{2,4}/i;
+    // Stryker disable next-line all
+    const teamId_regex = /[smfw]\d\d-([123456789]|10|11|12)(am|pm)-[1234]$/;
+    // Stryker disable next-line all
+    const solved_regex = /^(true|false)$/i;
 &nbsp;
     return (
 &nbsp;
         &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
-            
+&nbsp;
             &lt;Row&gt;
                 {initialContents &amp;&amp; (
                     &lt;Col&gt;
@@ -469,7 +468,40 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                         &lt;/Form.Group&gt;
                     &lt;/Col&gt;
                 )}
+                &lt;Col&gt;
+                    &lt;Form.Group className="mb-3" &gt;
+                        &lt;Form.Label htmlFor="teamId"&gt;Team ID&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid="HelpRequestForm-teamId"
+                            id="teamId"
+                            type="text"
+                            isInvalid={Boolean(errors.teamId)}
+                            {...register("teamId", { required: true, pattern: teamId_regex })}
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                            {errors.teamId &amp;&amp; 'TeamId is required.'}
+                            {errors.teamId?.type === 'pattern' &amp;&amp; 'TeamId must be in the correct format, e.g. f23-6pm-3'}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
+                &lt;/Col&gt;
+                &lt;Col&gt;
+                    &lt;Form.Group className="mb-3" &gt;
+                        &lt;Form.Label htmlFor="tableOrBreakoutRoom"&gt;Table or BreakoutRoom&lt;/Form.Label&gt;
+                        &lt;Form.Control
+                            data-testid="HelpRequestForm-tableOrBreakoutRoom"
+                            id="tableOrBreakoutRoom"
+                            type="text"
+                            isInvalid={Boolean(errors.tableOrBreakoutRoom)}
+                            {...register("tableOrBreakoutRoom", { required: true })}
+                        /&gt;
+                        &lt;Form.Control.Feedback type="invalid"&gt;
+                            {errors.tableOrBreakoutRoom &amp;&amp; 'Table or BreakoutRoom is required.'}
+                        &lt;/Form.Control.Feedback&gt;
+                    &lt;/Form.Group&gt;
+                &lt;/Col&gt;
+            &lt;/Row&gt;
 &nbsp;
+            &lt;Row&gt;
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
                         &lt;Form.Label htmlFor="requesterEmail"&gt;Requester Email&lt;/Form.Label&gt;
@@ -478,69 +510,33 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="requesterEmail"
                             type="text"
                             isInvalid={Boolean(errors.requesterEmail)}
-                            {...register("requesterEmail", {
-                                required: "Requester Email is required.", pattern: email_regex
-                            })}
-                            /&gt;
-                        &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.requesterEmail &amp;&amp; errors.requesterEmail?.type !== 'pattern' &amp;&amp; 'Email is required. '}
-                            {errors.requesterEmail?.type === 'pattern' &amp;&amp; 'Invalid email. Valid email has a username followed by @ followed by a domain, followed by . and an extension of at least length 2'}
-                        &lt;/Form.Control.Feedback&gt;
-                    &lt;/Form.Group&gt;
-                &lt;/Col&gt;
-                &lt;Col&gt;
-                    &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="teamId"&gt;Team Id&lt;/Form.Label&gt;
-                        &lt;Form.Control
-                            data-testid="HelpRequestForm-teamId"
-                            id="teamId"
-                            type="text"
-                            isInvalid={Boolean(errors.teamId)}
-                            {...register("teamId", { 
-                                required: true, 
-                                pattern: teamid_regex })}
+                            {...register("requesterEmail", { required: true, pattern: email_regex })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.teamId &amp;&amp; errors.teamId?.type !== 'pattern' &amp;&amp; 'Team Id is required. '}
-                            {errors.teamId?.type === 'pattern' &amp;&amp; 'Invalid Team Id. Team Id must be in the format qYY-nTT-S, e.g. f23-6pm-3'}
-                        &lt;/Form.Control.Feedback&gt;
-                        
-                    &lt;/Form.Group&gt;
-                &lt;/Col&gt;
-                &lt;Col&gt;
-                    &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="tableOrBreakoutRoom"&gt;Table Or Breakout Room&lt;/Form.Label&gt;
-                        &lt;Form.Control
-                            data-testid="HelpRequestForm-tableOrBreakoutRoom"
-                            id="tableOrBreakoutRoom"
-                            type="text"
-                            isInvalid={Boolean(errors.tableOrBreakoutRoom)}
-                            {...register("tableOrBreakoutRoom", { 
-                                required: "Table Or BreakoutRoom is required."
-                            })}
-                        /&gt;
-                        &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.tableOrBreakoutRoom?.message}
+                            {errors.requesterEmail &amp;&amp; 'RequesterEmail is required.'}
+                            {errors.requesterEmail?.type === 'pattern' &amp;&amp; 'RequesterEmail must be in the email format, e.g. cgacho@ucsb.edu'}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
-                &lt;/Col&gt;
+                &lt;/Col&gt;            
                 &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
                         &lt;Form.Label htmlFor="requestTime"&gt;Request Time (iso format)&lt;/Form.Label&gt;
                         &lt;Form.Control
                             data-testid="HelpRequestForm-requestTime"
                             id="requestTime"
-                            type="requestTime-local"
+                            type="datetime-local"
                             isInvalid={Boolean(errors.requestTime)}
                             {...register("requestTime", { required: true, pattern: isodate_regex })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.requestTime &amp;&amp; errors.requestTime?.type !== 'pattern' &amp;&amp; 'Request Time is required. '}
-                            {errors.requestTime?.type === 'pattern' &amp;&amp; 'Wrong format. Request Time must be in ISO format'}
+                            {errors.requestTime &amp;&amp; 'RequestTime is required.'}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
-                &lt;/Col&gt;
-                &lt;Col&gt;
+                &lt;/Col&gt;             
+            &lt;/Row&gt;
+&nbsp;
+            &lt;Row&gt;
+            &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
                         &lt;Form.Label htmlFor="explanation"&gt;Explanation&lt;/Form.Label&gt;
                         &lt;Form.Control
@@ -548,34 +544,32 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
                             id="explanation"
                             type="text"
                             isInvalid={Boolean(errors.explanation)}
-                            {...register("explanation", { 
-                                required: "Explanation is required."
-                            })}
+                            {...register("explanation", { required: true })}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
-                            {errors.explanation?.message}
+                            {errors.explanation &amp;&amp; 'Explanation is required.'}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
-                &lt;/Col&gt;
-                &lt;Col&gt;
+                &lt;/Col&gt; 
+            &lt;/Row&gt;
+&nbsp;
+            &lt;Row&gt;
+            &lt;Col&gt;
                     &lt;Form.Group className="mb-3" &gt;
-                        &lt;Form.Label htmlFor="solved"&gt;Solved&lt;/Form.Label&gt;
+                        &lt;Form.Label htmlFor="solved"&gt;Sloved&lt;/Form.Label&gt;
                         &lt;Form.Control
                             data-testid="HelpRequestForm-solved"
                             id="solved"
                             type="text"
                             isInvalid={Boolean(errors.solved)}
-                            {...register("solved", { 
-                                required: true,
-                                pattern: /^(true|false)$/
-                            })}
+                            {...register("solved", { required: true,  pattern: solved_regex})}
                         /&gt;
                         &lt;Form.Control.Feedback type="invalid"&gt;
                             {errors.solved &amp;&amp; 'Solved is required.'}
-                            {errors.solved?.type === 'pattern' &amp;&amp; 'Solved must be true or false, e.g. true'}
+                            {errors.solved?.type === 'pattern' &amp;&amp; 'Solved must be true or false'}
                         &lt;/Form.Control.Feedback&gt;
                     &lt;/Form.Group&gt;
-                &lt;/Col&gt;
+                &lt;/Col&gt; 
             &lt;/Row&gt;
 &nbsp;
             &lt;Row&gt;
@@ -607,7 +601,7 @@ export default HelpRequestForm;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Nov 08 2023 21:23:20 GMT-0800 (Pacific Standard Time)
+                at Sat Nov 11 2023 15:59:34 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
