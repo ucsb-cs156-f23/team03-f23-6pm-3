@@ -188,7 +188,6 @@ describe("AppNavbar tests", () => {
         expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
     });
 
-
 });
 
 
