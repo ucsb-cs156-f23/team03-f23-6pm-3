@@ -210,6 +210,7 @@ describe("AppNavbar tests", () => {
         const link = screen.getByText("Menu Item Review");
         expect(link).toBeInTheDocument();
         expect(link.getAttribute("href")).toBe("/menuitemreview");
+
     });
 
     test("renders the UCSBDiningCommonsMenuItem link correctly", async () => {

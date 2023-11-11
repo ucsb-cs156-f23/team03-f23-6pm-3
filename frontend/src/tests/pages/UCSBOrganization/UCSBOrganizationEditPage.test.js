@@ -1,9 +1,7 @@
-
 import { render, screen } from "@testing-library/react";
-import MenuItemReviewEditPage from "main/pages/MenuItemReview/MenuItemReviewEditPage";
+import UCSBOrganizationEditPage from "main/pages/UCSBOrganization/UCSBOrganizationEditPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -11,8 +9,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
 
-
-describe("MenuItemReviewEditPage tests", () => {
+describe("UCSBOrganizationEditPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
@@ -33,7 +30,7 @@ describe("MenuItemReviewEditPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <MenuItemReviewEditPage />
+                    <UCSBOrganizationEditPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -41,5 +38,7 @@ describe("MenuItemReviewEditPage tests", () => {
         // assert
         expect(screen.getByText("Edit page not yet implemented")).toBeInTheDocument();
     });
+
+});
 
 

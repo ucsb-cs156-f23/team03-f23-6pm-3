@@ -1,18 +1,14 @@
-
 import { render, screen } from "@testing-library/react";
-import MenuItemReviewEditPage from "main/pages/MenuItemReview/MenuItemReviewEditPage";
+import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-
-
-describe("MenuItemReviewEditPage tests", () => {
+describe("ArticlesCreatePage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
@@ -28,18 +24,20 @@ describe("MenuItemReviewEditPage tests", () => {
         // arrange
 
         setupUserOnly();
-
+       
         // act
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <MenuItemReviewEditPage />
+                    <ArticlesCreatePage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
 
         // assert
-        expect(screen.getByText("Edit page not yet implemented")).toBeInTheDocument();
+        expect(screen.getByText("Create page not yet implemented")).toBeInTheDocument();
     });
+
+});
 
 

@@ -1,3 +1,4 @@
+
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -22,9 +23,11 @@ jest.mock('react-toastify', () => {
     };
 });
 
+
 describe("MenuItemReviewIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
+
 
     const testId = "MenuItemReviewTable";
 
@@ -34,7 +37,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
-
+  
     const setupAdminUser = () => {
         axiosMock.reset();
         axiosMock.resetHistory();
@@ -126,6 +129,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         axiosMock.onGet("/api/menuitemreview/all").reply(200, menuItemReviewFixtures.threeReviews);
         axiosMock.onDelete("/api/menuitemreview").reply(200, "MenuItemReview with id 1 was deleted");
 
+
         // act
         render(
             <QueryClientProvider client={queryClient}>
@@ -136,6 +140,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         );
 
         // assert
+
         await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toBeInTheDocument(); });
 
         expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1");
