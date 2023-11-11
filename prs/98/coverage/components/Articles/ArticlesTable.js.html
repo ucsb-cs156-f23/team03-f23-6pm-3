@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/MenuItemReview/MenuItemReviewTable.js</title>
+    <title>Code coverage report for components/Articles/ArticlesTable.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/MenuItemReview</a> MenuItemReviewTable.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/Articles</a> ArticlesTable.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -139,15 +139,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,18 +155,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -185,12 +177,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -199,16 +199,16 @@
 import OurTable, { ButtonColumn } from "main/components/OurTable";
 &nbsp;
 import { useBackendMutation } from "main/utils/useBackend";
-import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/MenuItemReviewUtils"
+import { cellToAxiosParamsDelete, onDeleteSuccess } from "main/utils/articleUtils"
 import { useNavigate } from "react-router-dom";
 import { hasRole } from "main/utils/currentUser";
 &nbsp;
-export default function MenuItemReviewTable({ reviews, currentUser }) {
+export default function ArticlesTable({ articles, currentUser }) {
 &nbsp;
     const navigate = useNavigate();
 &nbsp;
     const editCallback = (cell) =&gt; {
-        navigate(`/menuitemreview/edit/${cell.row.values.id}`)
+        navigate(`/articles/edit/${cell.row.values.id}`)
     }
 &nbsp;
     // Stryker disable all : hard to test for query caching
@@ -216,7 +216,7 @@ export default function MenuItemReviewTable({ reviews, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/menuitemreview/all"]
+        ["/api/articles/all"]
     );
     // Stryker restore all 
 &nbsp;
@@ -230,36 +230,36 @@ export default function MenuItemReviewTable({ reviews, currentUser }) {
             accessor: 'id', // accessor is the "key" in the data
         },
         {
-            Header: 'Item ID',
-            accessor: 'itemId',
+            Header: 'Title',
+            accessor: 'title',
         },
         {
-            Header: 'Reviewer Email',
-            accessor: 'reviewerEmail',
+            Header: 'Url',
+            accessor: 'url',
         },
         {
-            Header: 'Stars',
-            accessor: 'stars',
+            Header: 'Explanation',
+            accessor: 'explanation',
         },
         {
-            Header: 'Date Reviewed',
-            accessor: 'dateReviewed',
+            Header: 'Email',
+            accessor: 'email',
         },
         {
-            Header: 'Comments',
-            accessor: 'comments',
+            Header: 'DateAdded',
+            accessor: 'dateAdded',
         }
     ];
 &nbsp;
     if (hasRole(currentUser, "ROLE_ADMIN")) {
-        columns.push(ButtonColumn("Edit", "primary", editCallback, "MenuItemReviewTable"));
-        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "MenuItemReviewTable"));
+        columns.push(ButtonColumn("Edit", "primary", editCallback, "ArticlesTable"));
+        columns.push(ButtonColumn("Delete", "danger", deleteCallback, "ArticlesTable"));
     } 
 &nbsp;
     return &lt;OurTable
-        data={reviews}
+        data={articles}
         columns={columns}
-        testid={"MenuItemReviewTable"}
+        testid={"ArticlesTable"}
     /&gt;;
 };</pre></td></tr></table></pre>
 
