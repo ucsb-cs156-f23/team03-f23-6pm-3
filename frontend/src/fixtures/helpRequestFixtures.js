@@ -1,5 +1,5 @@
 const helpRequestFixtures = {
-    oneHelpRequest: [
+    oneHelpRequest:
       {
         "id": 1,
         "requesterEmail": "pdg@ucsb.edu",
@@ -8,8 +8,7 @@ const helpRequestFixtures = {
         "requestTime": "2022-04-21T14:15:00",
         "explanation": "Merge conflict",
         "solved": false
-      }
-    ],
+      },
     threeHelpRequests: [
       {
         "id": 2,
