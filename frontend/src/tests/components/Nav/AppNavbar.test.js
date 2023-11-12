@@ -187,8 +187,8 @@ describe("AppNavbar tests", () => {
         expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
         expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
         expect(screen.queryByText("UCSBDiningCommonsMenuItem")).not.toBeInTheDocument();
-
     });
+
 
 
     test("renders the menuitemreview link correctly", async () => {
@@ -210,7 +210,7 @@ describe("AppNavbar tests", () => {
         const link = screen.getByText("Menu Item Review");
         expect(link).toBeInTheDocument();
         expect(link.getAttribute("href")).toBe("/menuitemreview");
-       
+
     });
 
     test("renders the UCSBDiningCommonsMenuItem link correctly", async () => {
