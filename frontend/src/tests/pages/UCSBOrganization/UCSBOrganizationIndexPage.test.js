@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import UCSBOrganizationIndexPage from "main/pages/UCSBOrganization/UCSBOrganizationIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -9,7 +9,7 @@ import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
 
-describe("ArticlesIndexPage tests", () => {
+describe("UCSBOrganizationIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
@@ -30,7 +30,7 @@ describe("ArticlesIndexPage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <ArticlesIndexPage />
+                    <UCSBOrganizationIndexPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -44,4 +44,3 @@ describe("ArticlesIndexPage tests", () => {
 });
 
 
-// empty comment

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ArticlesIndexPage from "main/pages/Articles/ArticlesIndexPage";
+import UCSBDiningCommonsMenuItemCreatePage from "main/pages/UCSBDiningCommonsMenuItem/UCSBDiningCommonsMenuItemCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -8,8 +8,7 @@ import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
 
-
-describe("ArticlesIndexPage tests", () => {
+describe("UCSBDiningCommonsMenuItemCreatePage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
 
@@ -25,23 +24,20 @@ describe("ArticlesIndexPage tests", () => {
         // arrange
 
         setupUserOnly();
-
+       
         // act
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <ArticlesIndexPage />
+                    <UCSBDiningCommonsMenuItemCreatePage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
 
         // assert
-        expect(screen.getByText("Index page not yet implemented")).toBeInTheDocument();
-        expect(screen.getByText("Create")).toBeInTheDocument();
-        expect(screen.getByText("Edit")).toBeInTheDocument();
+        expect(screen.getByText("Create page not yet implemented")).toBeInTheDocument();
     });
 
 });
 
 
-// empty comment
