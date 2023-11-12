@@ -37,7 +37,7 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/recommendationrequests" />
+    return <Navigate to="/recommendationrequest" />
   }
   
   return (
