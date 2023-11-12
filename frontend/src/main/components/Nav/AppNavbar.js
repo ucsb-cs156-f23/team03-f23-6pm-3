@@ -58,7 +58,12 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                   <Nav.Link as={Link} to="/ucsbdates">UCSB Dates</Nav.Link>
                   <Nav.Link as={Link} to="/placeholder">Placeholder</Nav.Link>
                   <Nav.Link as={Link} to="/articles">Articles</Nav.Link>
+                  <Nav.Link as={Link} to="/ucsborganization">UCSBOrganizations</Nav.Link>
+                  <Nav.Link as={Link} to="/menuitemreview">Menu Item Review</Nav.Link>
+
+
                   <Nav.Link as={Link} to="/ucsbdiningcommonsmenuitem">UCSBDiningCommonsMenuItem</Nav.Link>
+
                 </>
               )
             }
@@ -74,9 +79,12 @@ export default function AppNavbar({ currentUser, systemInfo, doLogout, currentUr
                 )
               }
             </Nav>
+            
           </Navbar.Collapse>
         </Container >
       </Navbar >
     </>
   );
 }
+
+// empty comment

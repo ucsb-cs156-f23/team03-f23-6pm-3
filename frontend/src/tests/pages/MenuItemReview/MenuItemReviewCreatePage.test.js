@@ -1,5 +1,5 @@
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-import ArticlesCreatePage from "main/pages/Articles/ArticlesCreatePage";
+import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
 
@@ -28,8 +28,7 @@ jest.mock('react-router-dom', () => {
     };
 });
 
-
-describe("ArticlesCreatePage tests", () => {
+describe("MenuItemReviewCreatePage tests", () => {
 
     const axiosMock =new AxiosMockAdapter(axios);
 
@@ -45,7 +44,7 @@ describe("ArticlesCreatePage tests", () => {
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <ArticlesCreatePage />
+                    <MenuItemReviewCreatePage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
@@ -54,41 +53,40 @@ describe("ArticlesCreatePage tests", () => {
     test("when you fill in the form and hit submit, it makes a request to the backend", async () => {
 
         const queryClient = new QueryClient();
-        const article = {
+        const menuItemReview = {
             id: 17,
-            title: "New Movies in 2023",
-            url: "https://editorial.rottentomatoes.com/article/most-anticipated-movies-of-2023/",
-            explanation: "Useful list of new movies",
-            email: "me@ucsb.edu",
-            dateAdded: "2022-02-02T00:00"
+            itemId: 23, 
+            reviewerEmail: "bella@ucsb.edu", 
+            stars: 3, 
+            dateReviewed: "2022-02-02T00:00", 
+            comments: "Noodles were soggy, but sauce was good."
         };
 
-        axiosMock.onPost("/api/articles/post").reply( 202, article );
-
+        axiosMock.onPost("/api/menuitemreview/post").reply( 202, menuItemReview );
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <ArticlesCreatePage />
+                    <MenuItemReviewCreatePage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
 
         await waitFor(() => {
-            expect(screen.getByTestId("ArticlesForm-title")).toBeInTheDocument();
+            expect(screen.getByTestId("MenuItemReviewForm-itemId")).toBeInTheDocument();
         });
 
-        const titleField = screen.getByTestId("ArticlesForm-title");
-        const urlField = screen.getByTestId("ArticlesForm-url");
-        const explanationField = screen.getByTestId("ArticlesForm-explanation");
-        const emailField = screen.getByTestId("ArticlesForm-email");
-        const dateAddedField = screen.getByTestId("ArticlesForm-dateAdded");
-        const submitButton = screen.getByTestId("ArticlesForm-submit");
+        const itemIdField = screen.getByTestId("MenuItemReviewForm-itemId");
+        const reviewerEmailField = screen.getByTestId("MenuItemReviewForm-reviewerEmail");
+        const starsField = screen.getByTestId("MenuItemReviewForm-stars");
+        const dateReviewedField = screen.getByTestId("MenuItemReviewForm-dateReviewed");
+        const commentsField = screen.getByTestId("MenuItemReviewForm-comments");
+        const submitButton = screen.getByTestId("MenuItemReviewForm-submit");
 
-        fireEvent.change(titleField, { target: { value: 'New Movies in 2023' } });
-        fireEvent.change(urlField, { target: { value: 'https://editorial.rottentomatoes.com/article/most-anticipated-movies-of-2023/' } });
-        fireEvent.change(explanationField, { target: { value: 'Useful list of new movies' } });
-        fireEvent.change(emailField, { target: { value: 'me@ucsb.edu' } });
-        fireEvent.change(dateAddedField, { target: { value: '2022-02-02T00:00' } });
+        fireEvent.change(itemIdField, { target: { value: 23 } });
+        fireEvent.change(reviewerEmailField, { target: { value: 'bella@ucsb.edu' } });
+        fireEvent.change(starsField, { target: { value: 3 } });
+        fireEvent.change(dateReviewedField, { target: { value: '2022-02-02T00:00' } });
+        fireEvent.change(commentsField, { target: { value: 'Noodles were soggy, but sauce was good.' } });
 
         expect(submitButton).toBeInTheDocument();
 
@@ -98,18 +96,17 @@ describe("ArticlesCreatePage tests", () => {
 
         expect(axiosMock.history.post[0].params).toEqual(
             {
-            "title": "New Movies in 2023",
-            "url": "https://editorial.rottentomatoes.com/article/most-anticipated-movies-of-2023/",
-            "explanation": "Useful list of new movies",
-            "email": "me@ucsb.edu",
-            "dateAdded": "2022-02-02T00:00",
+            "comments": "Noodles were soggy, but sauce was good.",
+            "dateReviewed": "2022-02-02T00:00",
+            "stars": "3",
+            "reviewerEmail": "bella@ucsb.edu",
+            "itemId": "23"
         });
 
-        expect(mockToast).toBeCalledWith("New article Created - id: 17 title: New Movies in 2023");
-        expect(mockNavigate).toBeCalledWith({ "to": "/articles" });
+        expect(mockToast).toBeCalledWith("New menuItemReview Created - id: 17 itemId: 23");
+        expect(mockNavigate).toBeCalledWith({ "to": "/menuitemreview" });
     });
 
 });
-// empty comment
 
 
