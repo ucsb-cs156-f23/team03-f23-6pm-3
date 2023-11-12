@@ -30,9 +30,10 @@ jest.mock('react-router-dom', () => {
 
 describe("RecommendationRequestCreatePage tests", () => {
 
-    const axiosMock =new AxiosMockAdapter(axios);
+    const axiosMock = new AxiosMockAdapter(axios);
 
     beforeEach(() => {
+        jest.clearAllMocks();
         axiosMock.reset();
         axiosMock.resetHistory();
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
@@ -60,7 +61,7 @@ describe("RecommendationRequestCreatePage tests", () => {
             explanation: "BS/MS Program",
             dateRequested: "2022-02-02T00:00",
             dateNeeded: "2023-02-02T00:00",
-            done: "false"
+            done: false
         };
 
         axiosMock.onPost("/api/recommendationrequests/post").reply( 202, recommendationRequest );
@@ -77,8 +78,7 @@ describe("RecommendationRequestCreatePage tests", () => {
             expect(screen.getByTestId("RecommendationRequestForm-requesterEmail")).toBeInTheDocument();
         });
 
-        const requesterEmailField = screen.getByTestId("RecommendationRequestForm-requesterEmail");
-        const professorEmailField = screen.getByTestId("RecommendationRequestForm-professorEmail");
+        const requesterEmailField = screen.getByTestId("RecommendationRequestForm-requesterEmail");        const professorEmailField = screen.getByTestId("RecommendationRequestForm-professorEmail");
         const explanationField = screen.getByTestId("RecommendationRequestForm-explanation");
         const dateRequestedField = screen.getByTestId("RecommendationRequestForm-dateRequested");
         const dateNeededField = screen.getByTestId("RecommendationRequestForm-dateNeeded");
@@ -91,7 +91,7 @@ describe("RecommendationRequestCreatePage tests", () => {
         fireEvent.change(dateRequestedField, { target: { value: '2022-02-02T00:00' } });
         fireEvent.change(dateNeededField, { target: { value: '2023-02-02T00:00' } });
         fireEvent.change(doneField, { target: { value: 'false'}});
-
+        
         expect(submitButton).toBeInTheDocument();
 
         fireEvent.click(submitButton);
@@ -105,11 +105,11 @@ describe("RecommendationRequestCreatePage tests", () => {
                 "dateRequested": "2022-02-02T00:00",
                 "explanation": "BS/MS Program",
                 "professorEmail": "xyz@ucsb.edu",
-                "requesterEmail": "abc@ucsb.edu",
+                "requesterEmail": "abc@ucsb.edu"
         });
 
         expect(mockToast).toBeCalledWith("New recommendationRequest Created - id: 17 from: abc@ucsb.edu");
-        expect(mockNavigate).toBeCalledWith({ "to": "/recommendationrequest" });
+        expect(mockNavigate).toBeCalledWith({ "to": "/recommendationrequests" });
     });
 
 

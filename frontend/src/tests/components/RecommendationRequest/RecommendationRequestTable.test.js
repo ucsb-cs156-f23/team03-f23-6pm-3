@@ -161,6 +161,7 @@ describe("RecommendationRequest tests", () => {
     );
 
     await waitFor(() => { expect(screen.getByTestId(`RecommendationRequestTable-cell-row-0-col-id`)).toHaveTextContent("1"); });
+    expect(screen.getByTestId(`RecommendationRequestTable-cell-row-0-col-done`)).toHaveTextContent("false");
 
     const deleteButton = screen.getByTestId(`RecommendationRequestTable-cell-row-0-col-Delete-button`);
     expect(deleteButton).toBeInTheDocument();

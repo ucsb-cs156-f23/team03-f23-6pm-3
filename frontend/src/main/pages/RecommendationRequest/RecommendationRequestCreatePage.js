@@ -6,22 +6,21 @@ import { toast } from "react-toastify";
 
 export default function RecommendationRequestCreatePage({storybook=false}) {
 
-  const objectToAxiosParams = (recommendationRequest) => ({
+  const objectToAxiosParams = (requests) => ({
     url: "/api/recommendationrequests/post",
     method: "POST",
     params: {
-      id: recommendationRequest.id,
-      requesterEmail: recommendationRequest.requesterEmail,
-      professorEmail: recommendationRequest.professorEmail,
-      explanation: recommendationRequest.explanation,
-      dateRequested: recommendationRequest.dateRequested,
-      dateNeeded: recommendationRequest.dateNeeded,
-      done: recommendationRequest.done
+      requesterEmail: requests.requesterEmail,
+      professorEmail: requests.professorEmail,
+      explanation: requests.explanation,
+      dateRequested: requests.dateRequested,
+      dateNeeded: requests.dateNeeded,
+      done: requests.done
     }
   });
 
-  const onSuccess = (recommendationRequest) => {
-    toast(`New recommendationRequest Created - id: ${recommendationRequest.id} from: ${recommendationRequest.requesterEmail}`);
+  const onSuccess = (requests) => {
+    toast(`New recommendationRequest Created - id: ${requests.id} from: ${requests.requesterEmail}`);
   }
 
   const mutation = useBackendMutation(
@@ -38,7 +37,7 @@ export default function RecommendationRequestCreatePage({storybook=false}) {
   }
 
   if (isSuccess && !storybook) {
-    return <Navigate to="/recommendationrequest" />
+    return <Navigate to="/recommendationrequests" />
   }
   
   return (
