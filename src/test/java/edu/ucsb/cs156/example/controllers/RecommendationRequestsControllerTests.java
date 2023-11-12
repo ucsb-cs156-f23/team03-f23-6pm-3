@@ -138,7 +138,7 @@ public class RecommendationRequestsControllerTests extends ControllerTestCase {
 
         // act
         MvcResult response = mockMvc.perform(
-            post("/api/recommendationrequests/post?requestorEmail=abc@ucsb.edu&professorEmail=xyz@ucsb.edu&explanation=BS/MS Program&dateRequested=2022-07-25T07:03:23&dateNeeded=2023-03-01T00:00:00&done=true")
+            post("/api/recommendationrequests/post?requesterEmail=abc@ucsb.edu&professorEmail=xyz@ucsb.edu&explanation=BS/MS Program&dateRequested=2022-07-25T07:03:23&dateNeeded=2023-03-01T00:00:00&done=true")
                 .with(csrf()))
             .andExpect(status().isOk()).andReturn();
 
