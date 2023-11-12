@@ -65,7 +65,9 @@ export default function MenuItemReviewEditPage({storybook=false}) {
         {
           menuItemReview && <MenuItemReviewForm initialContents={menuItemReview} submitAction={onSubmit} buttonLabel="Update" />
         }
+  
       </div>
     </BasicLayout>
   )
 }
+
