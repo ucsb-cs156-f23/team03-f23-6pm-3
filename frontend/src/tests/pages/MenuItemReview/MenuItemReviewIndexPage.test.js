@@ -23,12 +23,9 @@ jest.mock('react-toastify', () => {
     };
 });
 
-
 describe("MenuItemReviewIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
-
-
     const testId = "MenuItemReviewTable";
 
     const setupUserOnly = () => {
@@ -37,7 +34,7 @@ describe("MenuItemReviewIndexPage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
-  
+
     const setupAdminUser = () => {
         axiosMock.reset();
         axiosMock.resetHistory();
@@ -128,7 +125,6 @@ describe("MenuItemReviewIndexPage tests", () => {
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/menuitemreview/all").reply(200, menuItemReviewFixtures.threeReviews);
         axiosMock.onDelete("/api/menuitemreview").reply(200, "MenuItemReview with id 1 was deleted");
-
 
         // act
         render(

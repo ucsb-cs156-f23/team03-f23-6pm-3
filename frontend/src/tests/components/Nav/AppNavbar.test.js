@@ -187,6 +187,31 @@ describe("AppNavbar tests", () => {
         expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
         expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
         expect(screen.queryByText("UCSBDiningCommonsMenuItem")).not.toBeInTheDocument();
+        expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
+    });
+
+
+
+    test("renders the menuitemreview link correctly", async () => {
+
+        const currentUser = currentUserFixtures.userOnly;
+        const systemInfo = systemInfoFixtures.showingBoth;
+
+        const doLogin = jest.fn();
+
+        render(
+            <QueryClientProvider client={queryClient}>
+                <MemoryRouter>
+                    <AppNavbar currentUser={currentUser} systemInfo={systemInfo} doLogin={doLogin} />
+                </MemoryRouter>
+            </QueryClientProvider>
+        );
+
+        await screen.findByText("Menu Item Review");
+        const link = screen.getByText("Menu Item Review");
+        expect(link).toBeInTheDocument();
+        expect(link.getAttribute("href")).toBe("/menuitemreview");
+
     });
 
 

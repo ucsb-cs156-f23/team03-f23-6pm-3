@@ -1,6 +1,4 @@
-
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
-
 import MenuItemReviewCreatePage from "main/pages/MenuItemReview/MenuItemReviewCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -9,7 +7,6 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-
 
 const mockToast = jest.fn();
 jest.mock('react-toastify', () => {
@@ -73,7 +70,6 @@ describe("MenuItemReviewCreatePage tests", () => {
                 </MemoryRouter>
             </QueryClientProvider>
         );
-
 
         await waitFor(() => {
             expect(screen.getByTestId("MenuItemReviewForm-itemId")).toBeInTheDocument();

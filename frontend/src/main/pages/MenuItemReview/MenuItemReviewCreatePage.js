@@ -1,5 +1,4 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-
 import MenuItemReviewForm from "main/components/MenuItemReview/MenuItemReviewForm";
 import { Navigate } from 'react-router-dom'
 import { useBackendMutation } from "main/utils/useBackend";
@@ -51,4 +50,3 @@ export default function MenuItemReviewCreatePage({storybook=false}) {
     </BasicLayout>
   )
 }
-
