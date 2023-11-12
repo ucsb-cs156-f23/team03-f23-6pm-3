@@ -48,7 +48,7 @@ import java.time.LocalDateTime;
     @PreAuthorize(&quot;hasRole('ROLE_ADMIN')&quot;)
     @PostMapping(&quot;/post&quot;)
     public RecommendationRequest postRecommendationRequest(
-            @Parameter(name=&quot;requestorEmail&quot;, description=&quot;Email of requestor requestor&quot;, example=&quot;abc@ucsb.edu&quot;) @RequestParam String requestorEmail,
+            @Parameter(name=&quot;requesterEmail&quot;, description=&quot;Email of requester requester&quot;, example=&quot;abc@ucsb.edu&quot;) @RequestParam String requesterEmail,
             @Parameter(name=&quot;professorEmail&quot;, description=&quot;Email of the professor&quot;, example=&quot;xyz@ucsb.edu&quot;) @RequestParam String professorEmail,
             @Parameter(name=&quot;explanation&quot;, description=&quot;Reason for recommendation request&quot;, example=&quot;BS/MS Program&quot;) @RequestParam String explanation,
             @Parameter(name=&quot;dateRequested&quot;, description=&quot;In ISO format: YYYY-mm-ddTHH:MM:SS&quot;, example=&quot;2023-10-10T12:12:12&quot;) @RequestParam(&quot;dateRequested&quot;) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime dateRequested,
@@ -59,7 +59,7 @@ import java.time.LocalDateTime;
 <span class="fc" id="L59">        log.info(&quot;dateRequested={} dateNeeded={}&quot;, dateRequested, dateNeeded);</span>
 
 <span class="fc" id="L61">        RecommendationRequest recRequest = new RecommendationRequest();</span>
-<span class="fc" id="L62">        recRequest.setRequesterEmail(requestorEmail);</span>
+<span class="fc" id="L62">        recRequest.setRequesterEmail(requesterEmail);</span>
 <span class="fc" id="L63">        recRequest.setProfessorEmail(professorEmail);</span>
 <span class="fc" id="L64">        recRequest.setExplanation(explanation);</span>
 <span class="fc" id="L65">        recRequest.setDateRequested(dateRequested);</span>
