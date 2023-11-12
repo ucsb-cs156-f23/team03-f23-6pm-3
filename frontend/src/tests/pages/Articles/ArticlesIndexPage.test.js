@@ -7,8 +7,6 @@ import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
-
-
 import { articlesFixtures } from "fixtures/articlesFixtures";
 import mockConsole from "jest-mock-console";
 
@@ -22,11 +20,9 @@ jest.mock('react-toastify', () => {
     };
 });
 
-
 describe("ArticlesIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
-
 
     const testId = "ArticlesTable";
 
@@ -37,7 +33,6 @@ describe("ArticlesIndexPage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
-
 
     const setupAdminUser = () => {
         axiosMock.reset();
@@ -76,7 +71,6 @@ describe("ArticlesIndexPage tests", () => {
         setupUserOnly();
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/articles/all").reply(200, articlesFixtures.threeArticles);
-
 
         // act
         render(
