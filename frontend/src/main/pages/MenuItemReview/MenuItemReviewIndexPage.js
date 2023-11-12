@@ -2,11 +2,11 @@ import React from 'react'
 import { useBackend } from 'main/utils/useBackend';
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import ArticlesTable from 'main/components/Articles/ArticlesTable';
+import MenuItemReviewTable from 'main/components/MenuItemReview/MenuItemReviewTable';
 import { Button } from 'react-bootstrap';
 import { useCurrentUser , hasRole} from 'main/utils/currentUser';
 
-export default function ArticlesIndexPage() {
+export default function MenuItemReviewIndexPage() {
 
   const currentUser = useCurrentUser();
 
@@ -15,20 +15,20 @@ export default function ArticlesIndexPage() {
         return (
             <Button
                 variant="primary"
-                href="/articles/create"
+                href="/menuitemreview/create"
                 style={{ float: "right" }}
             >
-                Create Article 
+                Create MenuItemReview 
             </Button>
         )
     } 
   }
   
-  const { data: articles, error: _error, status: _status } =
+  const { data: reviews, error: _error, status: _status } =
     useBackend(
       // Stryker disable next-line all : don't test internal caching of React Query
-      ["/api/articles/all"],
-      { method: "GET", url: "/api/articles/all" },
+      ["/api/menuitemreview/all"],
+      { method: "GET", url: "/api/menuitemreview/all" },
       []
     );
 
@@ -36,11 +36,9 @@ export default function ArticlesIndexPage() {
     <BasicLayout>
       <div className="pt-2">
         {createButton()}
-        <h1>Articles</h1>
-        <ArticlesTable articles={articles} currentUser={currentUser} />
+        <h1>MenuItemReview</h1>
+        <MenuItemReviewTable reviews={reviews} currentUser={currentUser} />
       </div>
     </BasicLayout>
   )
 }
-// empty comment
-

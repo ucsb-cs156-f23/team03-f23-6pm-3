@@ -1,6 +1,6 @@
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 
-export default function ArticlesEditPage() {
+export default function UCSBOrganizationEditPage() {
 
   // Stryker disable all : placeholder for future implementation
   return (
@@ -11,5 +11,3 @@ export default function ArticlesEditPage() {
     </BasicLayout>
   )
 }
-// empty comment
-
