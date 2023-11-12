@@ -19,7 +19,7 @@ export default function RecommendationRequestTable({ requests, currentUser }) {
     const deleteMutation = useBackendMutation(
         cellToAxiosParamsDelete,
         { onSuccess: onDeleteSuccess },
-        ["/api/recommendationrequest/all"]
+        ["/api/recommendationrequests/all"]
     );
     // Stryker restore all 
 
