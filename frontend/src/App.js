@@ -86,13 +86,10 @@ function App() {
             </>
           )
         }
-        {/* for /organizations/edit/:id, if something does work, try change id to orgCode.
-        or try to change organizations to ucsborganizations
-        */}
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-            
+              //this should be orgCOde
               <Route exact path="/ucsborganization/edit/:orgCode" element={<UCSBOrganizationEditPage />} /> 
               <Route exact path="/ucsborganization/create" element={<UCSBOrganizationCreatePage />} />
             </>
