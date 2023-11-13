@@ -48,4 +48,3 @@ describe("HelpRequestUtils", () => {
                 method: "DELETE",
                 params: { id: 17 }
             });
-        });
