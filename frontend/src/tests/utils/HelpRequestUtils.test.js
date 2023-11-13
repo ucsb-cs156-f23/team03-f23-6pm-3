@@ -46,4 +46,5 @@ describe("HelpRequestUtils", () => {
                 url: "/api/helprequests",
                 method: "DELETE",
                 params: { id: 17 }
+    });
 });
