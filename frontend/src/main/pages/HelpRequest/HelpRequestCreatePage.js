@@ -46,7 +46,6 @@ export default function HelpRequestCreatePage({storybook=false}) {
         <h1>Create New HelpRequest</h1>
 
         <HelpRequestForm submitAction={onSubmit} />
-
       </div>
     </BasicLayout>
   )

@@ -1,3 +1,4 @@
+
 import { render, waitFor, fireEvent, screen } from "@testing-library/react";
 import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -64,7 +65,6 @@ describe("HelpRequestCreatePage tests", () => {
         };
 
         axiosMock.onPost("/api/helprequest/post").reply( 202, helpRequest );
-
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
@@ -111,7 +111,5 @@ describe("HelpRequestCreatePage tests", () => {
         expect(mockToast).toBeCalledWith("New helpRequest Created - id: 17 requesterEmail: cgaucho@ucsb.edu");
         expect(mockNavigate).toBeCalledWith({ "to": "/helprequest" });
     });
-
-
 });
 
