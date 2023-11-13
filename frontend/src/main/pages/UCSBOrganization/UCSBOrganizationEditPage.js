@@ -64,10 +64,13 @@ export default function UCSBOrganizationEditPage({storybook=false}) {
                 <h1>Edit UCSBOrganization</h1>
                 {
                     organization && <UCSBOrganizationForm submitAction={onSubmit} buttonLabel={"Update"} initialContents={organization} />
+
                 }
 
             </div>
+            
         </BasicLayout>
+        
     )
 
 }
