@@ -41,4 +41,6 @@ ThreeItemsAdminUser.parameters = {
             return res(ctx.status(200),ctx.json({}));
         }),
     ]
+
 };
+
