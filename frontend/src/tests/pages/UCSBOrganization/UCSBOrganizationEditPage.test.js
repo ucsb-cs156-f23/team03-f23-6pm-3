@@ -96,7 +96,7 @@ describe("UCSBOrganizationEditPage tests", () => {
 
         });
 
-        test.only("Is populated with the data provided", async () => {
+        test("Is populated with the data provided", async () => {
 
             render(
                 <QueryClientProvider client={queryClient}>
@@ -131,7 +131,7 @@ describe("UCSBOrganizationEditPage tests", () => {
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("Organization Updated - orgCode: ZPR orgTranslationShort: ABC");
+            expect(mockToast).toBeCalledWith("Organization Updated - orgCode: ZPR orgTranslationShort: ABC orgTranslation: DEF  inactive: true ");
 
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
 
@@ -172,14 +172,14 @@ describe("UCSBOrganizationEditPage tests", () => {
             expect(submitButton).toBeInTheDocument();
             
             //fireEvent.change(orgCodeField, { target: { value: "ZPR" } })
-            fireEvent.change(orgTranslationShortField, { target: { value: "111" } })
-            fireEvent.change(orgTranslationField, { target: { value: "222" } })
+            fireEvent.change(orgTranslationShortField, { target: { value: "ABC" } })
+            fireEvent.change(orgTranslationField, { target: { value: "DEF" } })
             fireEvent.change(inactiveField, { target: { value: "true" } })
 
             fireEvent.click(submitButton);
 
             await waitFor(() => expect(mockToast).toBeCalled());
-            expect(mockToast).toBeCalledWith("Organization Updated - orgCode: ZPR orgTranslationShort: ABC");
+            expect(mockToast).toBeCalledWith("Organization Updated - orgCode: ZPR orgTranslationShort: ABC orgTranslation: DEF  inactive: true ");
             expect(mockNavigate).toBeCalledWith({ "to": "/ucsborganization" });
             expect(axiosMock.history.put.length).toBe(1); // times called
             expect(axiosMock.history.put[0].params).toEqual({ orgCode: "ZPR" });
