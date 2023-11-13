@@ -1,3 +1,4 @@
+
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -25,9 +26,7 @@ jest.mock('react-toastify', () => {
 describe("HelpRequestIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
-
     const testId = "HelpRequestTable";
-
     const setupUserOnly = () => {
         axiosMock.reset();
         axiosMock.resetHistory();
@@ -148,7 +147,6 @@ describe("HelpRequestIndexPage tests", () => {
 
         // assert
         await waitFor(() => { expect(mockToast).toBeCalledWith("HelpRequest with id 2 was deleted") });
-
     });
 
 });
