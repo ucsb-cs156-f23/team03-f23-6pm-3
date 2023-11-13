@@ -1,42 +1,42 @@
 import React from 'react';
-import HelpRequestTable from "main/components/HelpRequest/HelpRequestTable";
-import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
+import RestaurantTable from 'main/components/Restaurants/RestaurantTable';
+import { restaurantFixtures } from 'fixtures/restaurantFixtures';
 import { currentUserFixtures } from 'fixtures/currentUserFixtures';
 import { rest } from "msw";
 
 export default {
-    title: 'components/HelpRequest/HelpRequestTable',
-    component: HelpRequestTable
+    title: 'components/Restaurants/RestaurantTable',
+    component: RestaurantTable
 };
 
 const Template = (args) => {
     return (
-        <HelpRequestTable {...args} />
+        <RestaurantTable {...args} />
     )
 };
 
 export const Empty = Template.bind({});
 
 Empty.args = {
-    requests: []
+    restaurants: []
 };
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
 
 ThreeItemsOrdinaryUser.args = {
-    requests: helpRequestFixtures.threeHelpRequests,
+    restaurants: restaurantFixtures.threeRestaurants,
     currentUser: currentUserFixtures.userOnly,
 };
 
 export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.args = {
-    requests: helpRequestFixtures.threeHelpRequests,
+    restaurants: restaurantFixtures.threeRestaurants,
     currentUser: currentUserFixtures.adminUser,
 }
 
 ThreeItemsAdminUser.parameters = {
     msw: [
-        rest.delete('/api/helprequest', (req, res, ctx) => {
+        rest.delete('/api/restaurants', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),

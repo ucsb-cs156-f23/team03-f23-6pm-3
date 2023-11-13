@@ -1,44 +1,45 @@
 import React from 'react';
-import HelpRequestTable from "main/components/HelpRequest/HelpRequestTable";
-import { helpRequestFixtures } from "fixtures/helpRequestFixtures";
+import UCSBDatesTable from "main/components/UCSBDates/UCSBDatesTable";
+import { ucsbDatesFixtures } from 'fixtures/ucsbDatesFixtures';
 import { currentUserFixtures } from 'fixtures/currentUserFixtures';
 import { rest } from "msw";
 
 export default {
-    title: 'components/HelpRequest/HelpRequestTable',
-    component: HelpRequestTable
+    title: 'components/UCSBDates/UCSBDatesTable',
+    component: UCSBDatesTable
 };
 
 const Template = (args) => {
     return (
-        <HelpRequestTable {...args} />
+        <UCSBDatesTable {...args} />
     )
 };
 
 export const Empty = Template.bind({});
 
 Empty.args = {
-    requests: []
+    dates: []
 };
 
 export const ThreeItemsOrdinaryUser = Template.bind({});
 
 ThreeItemsOrdinaryUser.args = {
-    requests: helpRequestFixtures.threeHelpRequests,
+    dates: ucsbDatesFixtures.threeDates,
     currentUser: currentUserFixtures.userOnly,
 };
 
 export const ThreeItemsAdminUser = Template.bind({});
 ThreeItemsAdminUser.args = {
-    requests: helpRequestFixtures.threeHelpRequests,
+    dates: ucsbDatesFixtures.threeDates,
     currentUser: currentUserFixtures.adminUser,
 }
 
 ThreeItemsAdminUser.parameters = {
     msw: [
-        rest.delete('/api/helprequest', (req, res, ctx) => {
+        rest.delete('/api/ucsbdates', (req, res, ctx) => {
             window.alert("DELETE: " + JSON.stringify(req.url));
             return res(ctx.status(200),ctx.json({}));
         }),
     ]
 };
+
