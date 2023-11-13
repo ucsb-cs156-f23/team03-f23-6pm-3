@@ -124,7 +124,6 @@ function App() {
             </>
           )
         }
-        {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
               <Route exact path="/helprequest/edit/:id" element={<HelpRequestEditPage />} />
