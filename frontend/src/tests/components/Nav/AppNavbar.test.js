@@ -187,7 +187,6 @@ describe("AppNavbar tests", () => {
         expect(screen.queryByText("UCSBDates")).not.toBeInTheDocument();
         expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
         expect(screen.queryByText("UCSBDiningCommonsMenuItem")).not.toBeInTheDocument();
-        expect(screen.queryByText("MenuItemReview")).not.toBeInTheDocument();
     });
 
 
