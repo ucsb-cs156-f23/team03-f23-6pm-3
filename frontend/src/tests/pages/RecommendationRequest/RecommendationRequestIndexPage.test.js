@@ -1,8 +1,8 @@
+
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import RecommendationRequestIndexPage from "main/pages/RecommendationRequest/RecommendationRequestIndexPage";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
-
 
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
@@ -25,6 +25,7 @@ jest.mock(`react-toastify`, () => {
 describe("RecommendationRequestIndexPage tests", () => {
 
     const axiosMock = new AxiosMockAdapter(axios);
+
 
     const testId = "RecommendationRequestTable";
 
@@ -73,6 +74,7 @@ describe("RecommendationRequestIndexPage tests", () => {
         const queryClient = new QueryClient();
         axiosMock.onGet("/api/recommendationrequests/all").reply(200, recommendationRequestFixtures.threeRecomendation);
 
+
         // act
         render(
             <QueryClientProvider client={queryClient}>
@@ -83,6 +85,7 @@ describe("RecommendationRequestIndexPage tests", () => {
         );
 
         // assert
+
         await waitFor(() => { expect(screen.getByTestId(`${testId}-cell-row-0-col-id`)).toHaveTextContent("1"); });
         expect(screen.getByTestId(`${testId}-cell-row-1-col-id`)).toHaveTextContent("2");
         expect(screen.getByTestId(`${testId}-cell-row-2-col-id`)).toHaveTextContent("3");
@@ -147,7 +150,6 @@ describe("RecommendationRequestIndexPage tests", () => {
 
         // assert
         await waitFor(() => { expect(mockToast).toBeCalledWith("RecommendationRequest with id 1 was deleted") });
-
     });
 
 });
