@@ -45,7 +45,7 @@ describe("ucsbOrganizationUtils", () => {
             expect(result).toEqual({
                 url: "/api/ucsborganization",
                 method: "DELETE",
-                params: { id: "ZPR" }
+                params: { orgCode: "ZPR" }
             });
         });
 

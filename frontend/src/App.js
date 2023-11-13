@@ -144,7 +144,7 @@ function App() {
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
-              <Route exact path="/ucsborganization/edit/:id" element={<UCSBOrganizationEditPage />} /> 
+              <Route exact path="/ucsborganization/edit/:orgCode" element={<UCSBOrganizationEditPage />} /> 
               <Route exact path="/ucsborganization/create" element={<UCSBOrganizationCreatePage />} />
             </>
           )
@@ -179,6 +179,22 @@ function App() {
             <>
               <Route exact path="/menuitemreview/edit/:id" element={<MenuItemReviewEditPage />} />
               <Route exact path="/menuitemreview/create" element={<MenuItemReviewCreatePage />} />
+            </>
+          )
+        }
+
+        {
+          hasRole(currentUser, "ROLE_USER") && (
+            <>
+              <Route exact path="/recommendationrequest" element={<RecommendationRequestIndexPage />} />
+            </>
+          )
+        }
+        {
+          hasRole(currentUser, "ROLE_ADMIN") && (
+            <>
+              <Route exact path="/recommendationrequest/edit/:id" element={<RecommendationRequestEditPage />} />
+              <Route exact path="/recommendationrequest/create" element={<RecommendationRequestCreatePage />} />
             </>
           )
         }
