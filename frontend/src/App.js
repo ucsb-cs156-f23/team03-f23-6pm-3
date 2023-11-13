@@ -188,6 +188,9 @@ function App() {
           )
         }
 
+              <Route exact path="/recommendationrequest" element={<RecommendationRequestIndexPage />} />
+              <Route exact path="/recommendationrequest/edit/:id" element={<RecommendationRequestEditPage />} />
+              <Route exact path="/recommendationrequest/create" element={<RecommendationRequestCreatePage />} />
       </Routes>
     </BrowserRouter>
   );
