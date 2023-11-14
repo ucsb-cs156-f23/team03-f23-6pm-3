@@ -14,7 +14,6 @@ import RestaurantEditPage from "main/pages/Restaurants/RestaurantEditPage";
 import PlaceholderIndexPage from "main/pages/Placeholder/PlaceholderIndexPage";
 import PlaceholderCreatePage from "main/pages/Placeholder/PlaceholderCreatePage";
 import PlaceholderEditPage from "main/pages/Placeholder/PlaceholderEditPage";
-
 import HelpRequestIndexPage from "main/pages/HelpRequest/HelpRequestIndexPage";
 import HelpRequestCreatePage from "main/pages/HelpRequest/HelpRequestCreatePage";
 import HelpRequestEditPage from "main/pages/HelpRequest/HelpRequestEditPage";
@@ -126,6 +125,7 @@ function App() {
             </>
           )
         }
+        
         {
           hasRole(currentUser, "ROLE_ADMIN") && (
             <>
@@ -198,11 +198,11 @@ function App() {
             </>
           )
         }
-
       </Routes>
     </BrowserRouter>
   );
 }
+
 
 export default App;
 
