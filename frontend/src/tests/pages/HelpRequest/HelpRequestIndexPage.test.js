@@ -1,4 +1,3 @@
-
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { MemoryRouter } from "react-router-dom";
@@ -33,7 +32,6 @@ describe("HelpRequestIndexPage tests", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
     };
-
     const setupAdminUser = () => {
         axiosMock.reset();
         axiosMock.resetHistory();
