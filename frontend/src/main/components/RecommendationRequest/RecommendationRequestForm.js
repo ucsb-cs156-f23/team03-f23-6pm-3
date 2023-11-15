@@ -108,7 +108,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         <Form.Control
                             data-testid="RecommendationRequestForm-dateRequested"
                             id="dateRequested"
-                            type="datetime-requested"
+                            type="datetime-local"
                             isInvalid={Boolean(errors.dateRequested)}
                             {...register("dateRequested", { required: true, pattern: isodate_regex })}
                         />
@@ -123,7 +123,7 @@ function RecommendationRequestForm({ initialContents, submitAction, buttonLabel 
                         <Form.Control
                             data-testid="RecommendationRequestForm-dateNeeded"
                             id="dateNeeded"
-                            type="datetime-needed"
+                            type="datetime-local"
                             isInvalid={Boolean(errors.dateNeeded)}
                             {...register("dateNeeded", { required: true, pattern: isodate_regex })}
                         />
