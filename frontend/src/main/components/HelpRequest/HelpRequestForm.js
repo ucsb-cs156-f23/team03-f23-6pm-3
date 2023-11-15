@@ -137,7 +137,7 @@ function HelpRequestForm({ initialContents, submitAction, buttonLabel = "Create"
             <Row>
             <Col>
                     <Form.Group className="mb-3" >
-                        <Form.Label htmlFor="solved">Sloved</Form.Label>
+                        <Form.Label htmlFor="solved">Solved</Form.Label>
                         <Form.Control
                             data-testid="HelpRequestForm-solved"
                             id="solved"
